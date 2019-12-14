@@ -10,12 +10,13 @@ public class Player : MonoBehaviour
     public string player_id;
     SpriteRenderer spriteRenderer;
     Polarity polarity;
-    public static float K = 10.0f;
+    PhysX physics;
 
     public Rigidbody2D rigidBody { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
+        physics = FindObjectOfType<PhysX>();
         polarity = Polarity.Neutral;
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
             //Input.GetKey(KeyCode.)
             if (p != this)
             {
-                float k = K * (float) p.polarity * (float) this.polarity;
+                float k = physics.K * (float) p.polarity * (float) this.polarity;
                 if (k != 0.0f)
                 {
                     //p.rigidBody.AddForce
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
                     Vector2 d2 = d * d; // d square
                     Vector2 ra = d / d.magnitude;
                     Vector2 f = k * ra / d2.magnitude;
+                    //Vector2 f = k * ra / d.magnitude;
                     Debug.Log(f);
                     p.rigidBody.AddForce(f);
                 }
