@@ -6,15 +6,17 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public string x_axis;
-    public string y_axis;
+    public string player_id;
+    SpriteRenderer spriteRenderer;
+    Polarity polarity;
    
-
     Rigidbody2D rigidBody;
     // Start is called before the first frame update
     void Start()
     {
+        polarity = Polarity.Neutral;
         rigidBody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -22,13 +24,17 @@ public class PlayerMovement : MonoBehaviour
     {
         DirectInput();
     }
+    void Update()
+    {
+        ChangePolarity();
+    }
 
     void DirectInput()
     {
-        float dxk = Input.GetAxis(x_axis);
-        float dxj = Input.GetAxis(x_axis + "_J");
-        float dyk = Input.GetAxis(y_axis);
-        float dyj = Input.GetAxis(y_axis + "_J");
+        float dxk = Input.GetAxis(player_id + "_Horizontal");
+        float dxj = Input.GetAxis(player_id + "_Horizontal_J");
+        float dyk = Input.GetAxis(player_id + "_Vertical");
+        float dyj = Input.GetAxis(player_id + "_Vertical_J");
 
         if (dxk != 0.0f || dyk != 0.0f)
         {
@@ -41,13 +47,23 @@ public class PlayerMovement : MonoBehaviour
     }
     void ChangePolarity()
     {
-        //Input.GetKey(KeyCode.)
+        if (Input.GetAxis(player_id + "_TogglePositive") > 0.0f) { polarity = Polarity.Positive; }
+        else if (Input.GetAxis(player_id + "_ToggleNegative") > 0.0f) { polarity = Polarity.Negative; }
+        else if (Input.GetAxis(player_id + "_ToggleNeutral") > 0.0f) { polarity = Polarity.Neutral; }
+
+        switch(polarity)
+        {
+            case Polarity.Positive: spriteRenderer.color = Color.red; break;
+            case Polarity.Negative: spriteRenderer.color = Color.blue; break;
+            case Polarity.Neutral: spriteRenderer.color = Color.yellow; break;
+        }
     }
 }
 
 
-
-
+public enum Polarity {
+    Negative, Neutral, Positive
+};
 
 
 

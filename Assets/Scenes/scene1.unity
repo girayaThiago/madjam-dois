@@ -152,8 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a49022a49aec1043a5a3683814e846f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x_axis: P2_Horizontal
-  y_axis: P2_Vertical
+  player_id: P2
 --- !u!61 &230275117
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -442,8 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a49022a49aec1043a5a3683814e846f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x_axis: P1_Horizontal
-  y_axis: P1_Vertical
+  player_id: P1
 --- !u!61 &921887532
 BoxCollider2D:
   m_ObjectHideFlags: 0
