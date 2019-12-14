@@ -8,30 +8,48 @@ public class PlayerMovement : MonoBehaviour
 {
     public string x_axis;
     public string y_axis;
-
+   
 
     Rigidbody2D rigidBody;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("a");
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        float dx = Input.GetAxis(x_axis);
-        float dy = Input.GetAxis(y_axis);
-
-        //rigidBody.velocity = new Vector2(dx, dy).normalized * 5.0f;
-        rigidBody.velocity = new Vector2(dx, dy) * 5.0f; //.normalized * 5.0f;
-        //transform.Translate(dx, dy, 0);
+        DirectInput();
     }
 
-    public void Somefunction(Vector2 v) { }
+    void DirectInput()
+    {
+        float dxk = Input.GetAxis(x_axis);
+        float dxj = Input.GetAxis(x_axis + "_J");
+        float dyk = Input.GetAxis(y_axis);
+        float dyj = Input.GetAxis(y_axis + "_J");
 
+        if (dxk != 0.0f || dyk != 0.0f)
+        {
+            rigidBody.velocity = new Vector2(dxk, dyk).normalized * 5.0f;
+        }
+        else
+        {
+            rigidBody.velocity = new Vector2(dxj, dyj) * 5.0f;
+        }
+    }
+    void ChangePolarity()
+    {
+        //Input.GetKey(KeyCode.)
+    }
 }
+
+
+
+
+
+
 
 
 
