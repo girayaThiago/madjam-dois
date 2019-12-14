@@ -4,25 +4,29 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public static List<Player> players = new List<Player>();
     public string player_id;
     SpriteRenderer spriteRenderer;
     Polarity polarity;
-   
-    Rigidbody2D rigidBody;
+    public static float K = 10.0f;
+
+    public Rigidbody2D rigidBody { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
         polarity = Polarity.Neutral;
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        players.Add(this);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         DirectInput();
+        AddForces();
     }
     void Update()
     {
@@ -38,11 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (dxk != 0.0f || dyk != 0.0f)
         {
-            rigidBody.velocity = new Vector2(dxk, dyk).normalized * 5.0f;
+            rigidBody.velocity += new Vector2(dxk, dyk).normalized * Time.fixedDeltaTime;
         }
         else
         {
-            rigidBody.velocity = new Vector2(dxj, dyj) * 5.0f;
+            rigidBody.velocity += new Vector2(dxj, dyj) * Time.fixedDeltaTime;
         }
     }
     void ChangePolarity()
@@ -58,11 +62,32 @@ public class PlayerMovement : MonoBehaviour
             case Polarity.Neutral: spriteRenderer.color = Color.yellow; break;
         }
     }
+    void AddForces()
+    {
+        foreach(Player p in players)
+        {
+            //Input.GetKey(KeyCode.)
+            if (p != this)
+            {
+                float k = K * (float) p.polarity * (float) this.polarity;
+                if (k != 0.0f)
+                {
+                    //p.rigidBody.AddForce
+                    Vector2 d = (p.transform.position - transform.position);
+                    Vector2 d2 = d * d; // d square
+                    Vector2 ra = d / d.magnitude;
+                    Vector2 f = k * ra / d2.magnitude;
+                    Debug.Log(f);
+                    p.rigidBody.AddForce(f);
+                }
+            } 
+        }
+    }
 }
 
 
 public enum Polarity {
-    Negative, Neutral, Positive
+    Negative = -1, Neutral = 0, Positive = 1
 };
 
 
