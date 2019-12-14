@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Polarity polarity;
     PhysX physics;
+    public Test test;
 
     public Rigidbody2D rigidBody { get; private set; }
     // Start is called before the first frame update
@@ -21,7 +23,9 @@ public class Player : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         players.Add(this);
+        PlayerPrefs.SetInt("time", 0);
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -91,6 +95,20 @@ public class Player : MonoBehaviour
 public enum Polarity {
     Negative = -1, Neutral = 0, Positive = 1
 }
+
+
+[Serializable]
+public class Test
+{
+    public int x;
+}
+
+
+
+
+
+
+
 
 
 
