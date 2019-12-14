@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public static List<Player> players = new List<Player>();
     public string player_id;
     SpriteRenderer spriteRenderer;
-    Polarity polarity;
+    public Polarity polarity;
     PhysX physics;
 
     public Rigidbody2D rigidBody { get; private set; }
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
 
 public enum Polarity {
     Negative = -1, Neutral = 0, Positive = 1
-};
+}
 
 
 
