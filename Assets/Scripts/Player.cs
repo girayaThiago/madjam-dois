@@ -61,12 +61,20 @@ public class Player : MonoBehaviour, Magnetic
         else if (Input.GetAxis(player_id + "_ToggleNegative") > 0.0f) { polarity = Polarity.Negative; }
         else if (Input.GetAxis(player_id + "_ToggleNeutral") > 0.0f) { polarity = Polarity.Neutral; }
 
+        Color nextColor = Color.yellow;
         switch(polarity)
         {
-            case Polarity.Positive: spriteRenderer.color = Color.red; break;
-            case Polarity.Negative: spriteRenderer.color = Color.blue; break;
-            case Polarity.Neutral: spriteRenderer.color = Color.yellow; break;
+            case Polarity.Positive: nextColor = Color.red; break;
+            case Polarity.Negative: nextColor = Color.blue; break;
+            case Polarity.Neutral: nextColor = Color.yellow; break;
         }
+
+        if (nextColor != spriteRenderer.color)
+        {
+            spriteRenderer.color = nextColor;
+            AudioManager.instance.PlayOnce("polaridade");
+        }
+
     }
     void AddForces()
     {
@@ -85,6 +93,14 @@ public class Player : MonoBehaviour, Magnetic
                     p.rigidBody.AddForce(f);
                 }
             } 
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag != "Portal" || collision.collider.tag == "Supernova")
+        {
+            AudioManager.instance.PlayOnce("colisao");
         }
     }
 }
