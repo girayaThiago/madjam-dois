@@ -12,6 +12,7 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        victory_achieved = false;
         physics = FindObjectOfType<PhysX>();
     }
 
@@ -28,7 +29,7 @@ public class Portal : MonoBehaviour
 
     void AddForces()
     {
-        foreach (Player p in Player.players)
+        foreach (Player p in physics.players)
         {
             float k = -physics.K;
             if (k != 0.0f)
@@ -37,7 +38,7 @@ public class Portal : MonoBehaviour
                 float dist = d.magnitude;
                 if (dist < 3.0f)
                 {
-                    //Debug.Log(dist);
+                    Debug.Log(dist);
                     Vector2 d2 = d * d; // d square
                     Vector2 ra = d / dist;
                     Vector2 f = k * ra / d2.magnitude;
