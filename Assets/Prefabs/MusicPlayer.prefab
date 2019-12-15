@@ -76,7 +76,7 @@ MonoBehaviour:
     loop: 1
   - name: polaridade
     clip: {fileID: 8300000, guid: 339c873118d4be046927085f5e2d4551, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.5
+    pitch: 2
     source: {fileID: 0}
     loop: 1
