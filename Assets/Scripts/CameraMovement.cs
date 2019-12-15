@@ -26,6 +26,6 @@ public class CameraMovement : MonoBehaviour
 
         
         Camera c = GetComponent<Camera>();
-        c.orthographicSize = Mathf.Clamp(d, 5.0f, 50.0f);
+        c.orthographicSize = Mathf.Clamp(0.75f*d, 5.0f, 20.0f);
     }
 }

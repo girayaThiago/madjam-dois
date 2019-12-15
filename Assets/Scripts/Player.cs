@@ -5,14 +5,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, Magnetic
 {
     public static List<Player> players = new List<Player>();
     public string player_id;
     SpriteRenderer spriteRenderer;
-    public Polarity polarity;
+    public Polarity polarity { get; set; }
+    public float mag_k { get; set; }
     PhysX physics;
-    public Test test;
 
     public Rigidbody2D rigidBody { get; private set; }
     // Start is called before the first frame update
@@ -77,13 +77,10 @@ public class Player : MonoBehaviour
                 float k = physics.K * (float) p.polarity * (float) this.polarity;
                 if (k != 0.0f)
                 {
-                    //p.rigidBody.AddForce
                     Vector2 d = (p.transform.position - transform.position);
-                    Vector2 d2 = d * d; // d square
+                    //Vector2 d2 = d * d; // d square
                     Vector2 ra = d / d.magnitude;
-                    Vector2 f = k * ra / d2.magnitude;
-                    //Vector2 f = k * ra / d.magnitude;
-                    Debug.Log(f);
+                    Vector2 f = k * ra / d.magnitude;
                     p.rigidBody.AddForce(f);
                 }
             } 
@@ -92,16 +89,8 @@ public class Player : MonoBehaviour
 }
 
 
-public enum Polarity {
-    Negative = -1, Neutral = 0, Positive = 1
-}
 
 
-[Serializable]
-public class Test
-{
-    public int x;
-}
 
 
 
