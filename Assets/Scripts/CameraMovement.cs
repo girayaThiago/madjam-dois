@@ -43,7 +43,7 @@ public class CameraMovement : MonoBehaviour
 
         float dx2 = dist.x * dist.x;
         float dy2 = dist.y * dist.y;
-        float fy = (dx2 <= dy2) ? dy2 : 0.0f;
+        float fy = (dx2 <= dy2) ? dx2 : 0.0f;
         float fx = dx2 * 0.5625f * 0.5625f;
         float d1 = Mathf.Sqrt(fx + fy);
         Camera c = GetComponent<Camera>();
