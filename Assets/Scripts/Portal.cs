@@ -19,6 +19,10 @@ public class Portal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         transform.Rotate(0, 0, 3.0f);
     }
 
