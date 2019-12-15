@@ -52,7 +52,13 @@ public class Portal : MonoBehaviour
         {
             Debug.Log("CALL");
             victory_achieved = true;
+            
             //yield return new WaitForSecondsRealtime(5);
+            if (SceneManager.GetActiveScene().buildIndex + 1 >= 3)
+            {
+                AudioManager.instance.Stop("tutorial");
+                AudioManager.instance.Play("distantSignal");
+            }
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         
@@ -64,7 +70,8 @@ public class Portal : MonoBehaviour
         {
             //D//ebug.Log("VICTORY");
             //Coroutine c = StartCoroutine("VictoryCondition"); // ());
-            VictoryCondition();
+
+            Invoke("VictoryCondition", 5.0f);
         }
     }
 }

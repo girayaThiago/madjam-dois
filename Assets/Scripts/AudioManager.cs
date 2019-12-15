@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
@@ -28,7 +27,6 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-
         }
 
     }
@@ -55,7 +53,7 @@ public class AudioManager : MonoBehaviour
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s)
+        if (s != null)
         {
             if (s.source.isPlaying)
             {
