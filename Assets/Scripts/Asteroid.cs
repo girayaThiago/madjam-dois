@@ -33,7 +33,7 @@ public class Asteroid : MonoBehaviour //, Magnetic
             {
                 Vector2 d = (p.transform.position - transform.position);
                 Vector2 ra = d / d.magnitude;
-                //Vector2 d = d * d; // d square
+                //d = d * d; // d square
                 Vector2 f = k * ra / d.magnitude;
                 p.rigidBody.AddForce(f);
             }
