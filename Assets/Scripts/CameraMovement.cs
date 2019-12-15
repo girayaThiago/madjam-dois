@@ -8,6 +8,8 @@ public class CameraMovement : MonoBehaviour
     //Camera camera;
     PhysX physics;
     Portal[] portals;
+    public GameObject arrowPrefab;
+    List<GameObject> arrows;
     //Player[] players;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,15 @@ public class CameraMovement : MonoBehaviour
         //players = FindObjectsOfType<Player>();
         physics = FindObjectOfType<PhysX>();
         portals = FindObjectsOfType<Portal>();
+        arrows = new List<GameObject>();
+
+        foreach (Portal p in portals) {
+            GameObject q = Instantiate(arrowPrefab, new Vector3(0,0,0), Quaternion.identity);
+            q.GetComponent<QuestHelper>().target = p.gameObject;
+            q.GetComponent<QuestHelper>().source = gameObject;
+            //q.transform.parent = Camera.main.transform;
+            arrows.Add(q);
+        }
     }
 
     // Update is called once per frame
