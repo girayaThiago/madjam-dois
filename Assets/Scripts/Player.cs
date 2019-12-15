@@ -102,6 +102,7 @@ public class Player : MonoBehaviour, Magnetic
         {
             AudioManager.instance.PlayOnce("colisao");
         }
+
     }
 }
 
