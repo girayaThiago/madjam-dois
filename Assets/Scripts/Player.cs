@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour, Magnetic
 {
-    public static List<Player> players = new List<Player>();
+    //public static List<Player> players = new List<Player>();
     public string player_id;
     SpriteRenderer spriteRenderer;
     public Polarity polarity { get; set; }
@@ -18,12 +18,13 @@ public class Player : MonoBehaviour, Magnetic
     // Start is called before the first frame update
     void Start()
     {
+        //players = new List<Player>();
         physics = FindObjectOfType<PhysX>();
         polarity = Polarity.Neutral;
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        players.Add(this);
-        PlayerPrefs.SetInt("time", 0);
+        //physics.players.Add(this);
+        //PlayerPrefs.SetInt("time", 0);
     }
 
 
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour, Magnetic
     }
     void AddForces()
     {
-        foreach(Player p in players)
+        foreach(Player p in physics.players)
         {
             //Input.GetKey(KeyCode.)
             if (p != this)

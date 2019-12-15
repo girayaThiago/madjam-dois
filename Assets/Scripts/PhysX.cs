@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PhysX : MonoBehaviour
 {
-    public float K = 10.0f;
+    public float K { get; set; }
+    //public List<Player> players;
+    public Player[] players;
+
+    private void Start()
+    {
+        K = 50.0f;
+        players = FindObjectsOfType<Player>();
+    }
 }
 
 public enum Polarity

@@ -26,7 +26,7 @@ public class Asteroid : MonoBehaviour //, Magnetic
 
     void AddForces()
     {
-        foreach (Player p in Player.players)
+        foreach (Player p in physics.players)
         {
             float k = physics.K * (float)p.polarity * (float)this.polarity;
             if (k != 0.0f)
