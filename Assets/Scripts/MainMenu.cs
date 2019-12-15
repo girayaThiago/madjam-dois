@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        AudioManager.instance.Play("menuScreen");
+    }
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        AudioManager.instance.Stop("menuScreen");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // load next scene
     }
 
 
