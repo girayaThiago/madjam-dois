@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.volume = s.volume;
             s.source.clip = s.clip;
-            s.source.pitch = s.pitch;
+            s.source.pitch = 1;
             s.source.loop = s.loop;
         }
 
@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     public void Play(string name)
@@ -50,6 +50,20 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+
+    public void PlayOnce(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.Log("Error sound: " + name + " was not found!");
+        }
+        else
+        {
+            s.source.PlayOneShot(s.clip);
+        }
+    }
+
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);

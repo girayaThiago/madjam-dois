@@ -47,36 +47,36 @@ MonoBehaviour:
   - name: distantSignal
     clip: {fileID: 8300000, guid: bede2e333b4925e45b89bd6320cdbe94, type: 3}
     volume: 1
-    pitch: 0.1
+    pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: menuScreen
     clip: {fileID: 8300000, guid: 249307bf79431a148bbe59c1d9000704, type: 3}
     volume: 1
-    pitch: 0.1
+    pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: tutorial
     clip: {fileID: 8300000, guid: dd1a3c782fb1c24429ecbcb8d2e9d2f3, type: 3}
     volume: 1
-    pitch: 0.1
+    pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: colisao
     clip: {fileID: 8300000, guid: 7093992358c30264eab134db697dd392, type: 3}
     volume: 1
-    pitch: 0.1
+    pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: explosao
     clip: {fileID: 8300000, guid: 45286bc8ed17af4408d957432d66999b, type: 3}
     volume: 1
-    pitch: 0.1
+    pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: polaridade
     clip: {fileID: 8300000, guid: 339c873118d4be046927085f5e2d4551, type: 3}
     volume: 1
-    pitch: 0.1
+    pitch: 1
     source: {fileID: 0}
     loop: 1

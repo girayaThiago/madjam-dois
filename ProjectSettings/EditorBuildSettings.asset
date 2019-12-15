@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Template Level 5.unity
     guid: aaa4072618b9df8409e93ef27016a16d
+  - enabled: 1
+    path: Assets/Scenes/Template Level 6 (DOPE).unity
+    guid: 780c8668594282941a25b48f835e7362
+  - enabled: 1
+    path: Assets/Scenes/Template Level 6 (NOPE).unity
+    guid: 5555ca6af4e14e344b951fd556d28a1d
   m_configObjects: {}

@@ -16,7 +16,7 @@ public class Supernova : MonoBehaviour
         //collider = GetComponent<Collider>();
     }
 
-    IEnumerator OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject player = collision.collider.gameObject;
         Vector2 v2 = player.transform.position - transform.position;
@@ -24,7 +24,17 @@ public class Supernova : MonoBehaviour
         player.GetComponent<Rigidbody2D>().AddTorque(10.0f);
         transform.localScale *= 1.5f;
         GetComponent<Animator>().Play("supernova_explode");
-        yield return new WaitForSecondsRealtime(1);
+        
+        AudioManager.instance.PlayOnce("explosao");
+        //yield return new WaitForSecondsRealtime(1);
+        //Invoke("destructor", 1f);
+        //destructor();
+
+        
+    }
+
+    void destructor()
+    {
         Destroy(gameObject);
     }
 
