@@ -17,15 +17,19 @@ public class CameraMovement : MonoBehaviour
     {
         Vector3 p1 = Player.players[0].transform.position;
         Vector3 p2 = Player.players[1].transform.position;
-        float d = (p1 - p2).magnitude;
+        Vector3 dist = (p1 - p2);
+        
         Vector3 coords = Vector3.zero;
-
         Vector3 avg = (p1 + p2) * 0.5f;
         avg.z = transform.position.z;
         transform.position = avg;
 
-        
+        float dx2 = dist.x * dist.x;
+        float dy2 = dist.y * dist.y;
+        float fy = (dx2 <= dy2) ? dy2 : 0.0f;
+        float fx = dx2 * 0.5625f * 0.5625f;
+        float d1 = Mathf.Sqrt(fx + fy);
         Camera c = GetComponent<Camera>();
-        c.orthographicSize = Mathf.Clamp(0.75f*d, 5.0f, 20.0f);
+        c.orthographicSize = Mathf.Clamp(d1*0.5f + 1.0f, 5.0f, 15.0f);
     }
 }
