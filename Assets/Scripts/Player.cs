@@ -87,6 +87,11 @@ public class Player : MonoBehaviour, Magnetic
             } 
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
 }
 
 
