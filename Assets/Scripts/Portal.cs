@@ -32,10 +32,15 @@ public class Portal : MonoBehaviour
             if (k != 0.0f)
             {
                 Vector2 d = (p.transform.position - transform.position);
-                Vector2 d2 = d * d; // d square
-                Vector2 ra = d / d.magnitude;
-                Vector2 f = k * ra / d2.magnitude;
-                p.rigidBody.AddForce(f);
+                float dist = d.magnitude;
+                if (dist < 3.0f)
+                {
+                    Debug.Log(dist);
+                    Vector2 d2 = d * d; // d square
+                    Vector2 ra = d / dist;
+                    Vector2 f = k * ra / d2.magnitude;
+                    p.rigidBody.AddForce(f);
+                }
             }
         }
     }
