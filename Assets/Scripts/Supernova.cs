@@ -8,12 +8,12 @@ using UnityEngine;
 public class Supernova : MonoBehaviour
 {
     float K;
-    Collider collider;
+    //Collider collider;
     // Start is called before the first frame update
     void Start()
     {
         K = 1000.0f;
-        collider = GetComponent<Collider>();
+        //collider = GetComponent<Collider>();
     }
 
     IEnumerator OnCollisionEnter2D(Collision2D collision)
