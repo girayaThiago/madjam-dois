@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
 public class Portal : MonoBehaviour
 {
+    static bool victory_achieved = false;
     PhysX physics;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class Portal : MonoBehaviour
                 float dist = d.magnitude;
                 if (dist < 3.0f)
                 {
-                    Debug.Log(dist);
+                    //Debug.Log(dist);
                     Vector2 d2 = d * d; // d square
                     Vector2 ra = d / dist;
                     Vector2 f = k * ra / d2.magnitude;
@@ -44,5 +46,25 @@ public class Portal : MonoBehaviour
             }
         }
     }
+    void VictoryCondition()
+    {
+        if (!victory_achieved)
+        {
+            Debug.Log("CALL");
+            victory_achieved = true;
+            //yield return new WaitForSecondsRealtime(5);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.name == "Player1" || collision.collider.gameObject.name == "Player2")
+        {
+            //D//ebug.Log("VICTORY");
+            //Coroutine c = StartCoroutine("VictoryCondition"); // ());
+            VictoryCondition();
+        }
+    }
 }
