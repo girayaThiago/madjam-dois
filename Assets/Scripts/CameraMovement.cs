@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     //Player[] players;
     //Camera camera;
     PhysX physics;
+    Portal[] portals;
     //Player[] players;
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class CameraMovement : MonoBehaviour
         //camera = GetComponent<Camera>();
         //players = FindObjectsOfType<Player>();
         physics = FindObjectOfType<PhysX>();
+        portals = FindObjectsOfType<Portal>();
     }
 
     // Update is called once per frame
