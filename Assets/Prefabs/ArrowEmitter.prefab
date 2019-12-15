@@ -40,14 +40,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3809000188312895747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 726288a703ecd4fb7a683920635b0a1a, type: 3}
+  m_Script: {fileID: 11500000, guid: dda8fe8829ac036469882364fec36bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitted: {fileID: 2265675178291145892, guid: 9b74051f8abb74e8da60db9271cb15d1, type: 3}
+  emitted: {fileID: 2265675178291145892, guid: 550fa12958628814081451cabb99020a, type: 3}
   origin: {fileID: 3809000188312895749}
   end: {fileID: 3809000188749233949}
   originRange: {fileID: 3809000189089639481}
-  cooldown: 2
+  cooldown: 0.7
   rotation: 0
 --- !u!1 &3809000188428211577
 GameObject:

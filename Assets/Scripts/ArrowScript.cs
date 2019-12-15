@@ -12,10 +12,12 @@ public class ArrowScript : MonoBehaviour
 
     public void init(float range, float size, Vector3 speed, Vector3 rotation)
     {
-        float sizeScale = Random.Range(0.2f, 2.0f);
+        transform.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
+
+        float sizeScale = Random.Range(0.1f, 0.9f);
         this.range = range; //distance to travel before expiring
-        this.size = size * sizeScale;
-        this.speed = speed * sizeScale/2;
+        this.size = sizeScale * sizeScale;
+        this.speed = speed / sizeScale;
         Debug.Log(rotation);
         transform.rotation = Quaternion.Euler(rotation);
         transform.localScale = new Vector3(size, size, 0);
